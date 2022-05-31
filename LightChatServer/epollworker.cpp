@@ -22,7 +22,7 @@ void EpollWorker::EpollRun()
     struct sockaddr_in client;
     bzero(&client, sizeof(client));
 
-    int epfd = epoll_create(1);
+    epfd = epoll_create(1);
     ep_event.events = EPOLLIN;
     // ep_event.data.fd = 0;
     // int ret = epoll_ctl(epfd,EPOLL_CTL_ADD,0, &ep_event);
@@ -130,4 +130,9 @@ int EpollWorker::find_client(int &fd)
         }
     }
     return -1;
+}
+
+EpollWorker::~EpollWorker()
+{
+    ::close(epfd);
 }

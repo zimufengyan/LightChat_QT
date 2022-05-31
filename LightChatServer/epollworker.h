@@ -11,6 +11,7 @@ class EpollWorker : public QObject
     Q_OBJECT
 public:
     EpollWorker();
+    ~EpollWorker();
     void closeThread();
 signals:
     void sendString(QString msg);
@@ -25,6 +26,7 @@ private:
     volatile bool thisAlive;
     int server;
     int conn_num = 0;
+    int epfd;
     int clients[MaxNum] = {-1};
     int listen_sock, epoll_fd, control_sock=-1;
     char sendMsg[BUFF_SIZE];

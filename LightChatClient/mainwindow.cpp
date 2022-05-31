@@ -55,6 +55,7 @@ void MainWindow::sendMsg()
         if (send(server_sock, msg, strlen(msg), 0) < 0){
             this->showMsg("[ERROR] Failed to send.");
         }
+        ui->msgEdit->clear();
     }
 }
 

@@ -78,5 +78,5 @@ void EpollWorker::EpollRun()
 
 EpollWorker::~EpollWorker()
 {
-
+    ::close(epfd);
 }
